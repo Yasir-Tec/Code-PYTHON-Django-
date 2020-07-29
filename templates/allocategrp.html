@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Allocate Groups</title>
+
+ <style>
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head>
+<a href="#" class="previous round" onclick="goBack()">back</a>
+<body>
+<form action="group/" method="post">
+    {% csrf_token %}
+    {% block content %}
+    <select name="group">
+        {% for i in alldata %}
+        <option value="{{i.title1}}">{{i.title1}}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">SELECT</button>
+    {% endblock %}
+</form>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+</html>

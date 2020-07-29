@@ -1,0 +1,166 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEACHER DETAILS</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+        h1,h2,h3,P{color:black;font-weight:bold;font-family:Times New Roman;text-shadow: 2px 1px white;
+        }
+        td,th{font-family:Times New Roman;padding:30px;text-align:center;
+        }
+        input[type=text] {
+  width: 30%;
+  padding-left:10px;
+  box-sizing: border-box;
+  color: #ff0000;
+}
+.form-control{color: #ff0000;
+}
+input::placeholder{
+  color: #f00;
+}
+ /* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:30%;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #454d55;text-align:center;padding-left:20px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 16px;
+  right: 25px;
+  width: 10;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #454d55;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: black;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head><a href="#" class="previous round" onclick="goBack()">back</a>
+<br>
+<body  STYLE="background-color:#9d9c9c">
+
+<br><br>
+{% for i in kk %}
+<center>
+    <h1>Welcome, {{i.degree}} {{i.fname}} {{i.lname}}</h1>{% endfor %}
+    <h3>MANAGE ADMIN TASK HERE!</h3>
+</center>
+<br><br><br>
+<table  class="table table-dark table-hover">
+    <thead>
+    <tr style="text-align:center;">
+        <th style="text-align:center;">SR.NO</th>
+        <th style="text-align:center;">OPTIONS</th>
+
+    </tr>
+    </thead>
+    <tbody id="myTable">
+    <tr>
+        <td style="font-size:20px;padding:20px;">1</td>
+        <td style="font-size:20px;padding:20px;"><a href="detail/" style="color:white;">ALLOCATES PROJECTS TO TEACHERS</a></td>
+    </tr>
+    <tr>
+        <td style="font-size:20px;padding:20px;">2</td>
+        <td style="font-size:20px;padding:20px;"><a href="detail2/" style="color:white;">LIST OF REGISTERED GROUPS</a></td>
+    </tr>
+    <tr>
+        <td style="font-size:20px;padding:20px;">3</td>
+        <td style="font-size:20px;padding:20px;"><a href="detail3/" style="color:white;">LIST OF ALLOCATED GUIDE TO PROJECT GROUPS</a></td>
+    </tr>
+    <tr>
+        <td style="font-size:20px;padding:20px;">4</td>
+        <td style="font-size:20px;padding:20px;"><a href="manage/" style="color:white;">MANAGE RESOURCES</a></td>
+    </tr>
+
+
+    </tbody>
+</table>
+
+
+</form>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+</html>

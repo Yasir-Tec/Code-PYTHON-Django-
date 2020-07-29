@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        tr,td{
+            text-align:center;
+            padding:10px;
+            border:2px solid #ddd;
+        }
+        h4{color:black;
+        }
+        th{
+            background-color:#454d55;
+            padding:10px;
+            color:white;
+        }
+        table{
+        width:100%;
+
+        }
+       input[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #454d55;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button5 {
+  background-color: #454d55;
+  color: WHITE;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: white;
+  color: black;
+}
+ /* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:30%;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #454d55;text-align:center;padding-left:20px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 16px;
+  right: 25px;
+  width: 10;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #454d55;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head>
+<a href="#" class="previous round" onclick="goBack()">back</a>
+<body STYLE="background-color:#9d9c9c">
+<form action="next/" method="post">
+    {% csrf_token %}
+    {% block content %}
+
+    <table>
+        <tr> {% for i in trackdata %}
+            <center style="padding:10px;font-size:30px; color:black; font-weight:bold;text-shadow: 3px 1px white;">
+                {{i.title1}}
+            </center>
+        </tr>
+        <h4>GROUP MEMBERS :
+            {% for i in members %}
+            {{i.fname1}} {{i.lname1}},
+            {% endfor %}</h4>
+        {% for i in tea %}
+        <h4>ALLOCATED TEACHER IS: {{i.degree}} {{i.fname}} {{i.lname}} {% endfor %}</h4>
+        {% endfor %}
+
+        <tr>
+            <th>
+                MODULES
+            </th>
+            <th>
+                SUBMODULES
+            </th>
+            <th>
+                PRIORITY
+            </th>
+            <th>
+                STATUS
+            </th>
+            <th>
+                DELETE
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="mod1" PLACEHOLDER=" MAIN-MODULE">
+            </td>
+            <td>
+                <input type="text" name="smod1" PLACEHOLDER=" SUB-MODULE"><br>
+
+
+            </td>
+            <td>
+                <center>
+                    <div class="custom-select" style="width:160px; padding-left:20px; padding-right:0px;">
+                        <select NAME="prio1">
+                            <option value="low">LOW</option>
+                            <option value="meadium">MEADIUM</option>
+                            <option value="high">HIGH</option>
+                        </select>
+                    </div>
+                </center>
+
+
+            </td>
+            <td>
+                <center>
+                    <div class="custom-select"
+                         style="width:160px; padding-left:20px; padding-right:0px;">
+                        <select name="status1">
+                            <option value="completed">Completed</option>
+                            <option value="INprogress">IN-Progress</option>
+                            <option value="Not started">Not Started</option>
+                        </select>
+                    </div>
+                </center>
+            </td>
+            <td>
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button class="button button5">SUBMIT</button>
+            </td>
+        </tr>
+    </table>
+
+
+</form>
+<br>
+<center><h2 style=" text-shadow: 3px 1px white;">PROJECT TRACKER</h2></center>
+
+<table>
+    <tr>
+        <th>
+            MODULES
+        </th>
+        <th>
+            SUBMODULES
+        </th>
+        <th>
+            PRIORITY
+        </th>
+        <th>
+            STATUS
+        </th>
+
+    </tr>
+    {% for i in jj %}
+    <tr>
+        <td>{{i.mod}}</td>
+        <td>{{i.smod}}</td>
+        <td>{{i.priority}}</td>
+        <td>{{i.status}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+</form>
+<form action="up/" method="post">
+    {% csrf_token %}
+    <h3>UPDATE RECORDS IN THE TABLE HERE </h3>
+    <table>
+        <tr>
+            <th>SUB-MODULE</th>
+            <th>PRIORITY</th>
+            <th>STATUS</th>
+            <th>UPDATE</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="smod2" placeholder="ENTER SUB-MODULE" width="30%"></td>
+
+            <td>
+                <center>
+                    <div class="custom-select"
+                         style="width:160px; padding-left:20px; padding-right:0px; padding-bottom:10px;">
+                        <select name="prio1">
+                            <option value="low">low</option>
+                            <option value="high">high</option>
+                            <option value="meadium">meadium</option>
+                        </select>
+                    </div>
+                </center>
+            </td>
+
+            <td>
+                <center>
+                    <div class="custom-select"
+                         style="width:160px; padding-left:20px; padding-right:0px; padding-bottom:10px;">
+                        <select name="status1">
+                            <option value="completed">Completed</option>
+                            <option value="INprogress">IN-Progress</option>
+                            <option value="Not started">Not Started</option>
+                        </select></div>
+
+                </center>
+            </td>
+            <td>
+                <input type="hidden" name="next" value="{{ request.path }}">
+                <button class="button button5">update</button>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+<form action="del/" method="POST">
+    {% csrf_token %}
+    <h3>DELETE MODULES</h3>
+    <table>
+        <tr>
+            <th>MAIN MODULE</th>
+            <th>DELETE</th>
+            <th>SUB-MODULE</th>
+            <th>DELETE</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="del" placeholder="MAIN-MODULE"></td>
+            <td><input type="hidden" name="next" value="{{ request.path }}">
+                <button class="button button5">DELETE</button>
+            </td>
+            <td><input type="text" name="sdel" PLACEHOLDER="SUB-MODULE"></td>
+            <td><input type="hidden" name="next" value="{{ request.path }}">
+                <button class="button button5">DELETE</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<form action="done/" method="POST">
+    {% csrf_token %}
+    <h3>CLICK HERE TO SAVE ALL UPDATIONS <input type="hidden" name="next" value="{{ request.path }}">
+         <button class="button button5">SAVE</button>
+</form>
+<script>
+    var x, i, j, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+
+
+
+
+
+</script>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+</html>

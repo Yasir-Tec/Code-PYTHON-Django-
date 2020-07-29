@@ -1,0 +1,157 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head>
+<a href="#" class="previous round" onclick="goBack()">back</a>
+<body>
+
+<div class="main">
+
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-img">
+                <img src="{% static 'images/form-img.jpg'%}" alt="">
+                <div class="signup-img-content">
+                    <h2>Register now </h2>
+                    <p>MINI PROJECT MANAGEMENT SYSTEM !</p>
+                </div>
+            </div>
+            <div class="signup-form">
+                <form method="POST" class="register-form" id="register-form" action="addmore/">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+
+                            <div class="form-input">
+                                <label for="first_name" class="required">First name</label>
+                                <input type="text" name="fname1" id="first_name" required pattern="[a-zA-Z]+" title="contains only characters"/>
+                            </div>
+                            <div class="form-input">
+                                <label for="last_name" class="required">Last name</label>
+                                <input type="text" name="lname1" id="last_name" required pattern="[a-zA-Z]+" title="contains only characters"/>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="email" class="required">Email</label>
+                                <input type="text" name="email1" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="must contain in gmail format example-> example@gmail.com"/>
+                            </div>
+                            <div class="form-input">
+                                <label for="phone_number" class="required">Phone number</label>
+                                <input type="text" name="no1" id="phone_number" required pattern="[0-9]+" title="contains only numbers"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="form-select">
+
+                            </div>
+
+                            <div class="form-input">
+                                <label for="chequeno">Enter role</label>
+                                <input type="text" name="role1" value="Member" readonly>
+                            </div>
+
+                            <div class="form-input">
+                                <label for="blank_name">Select department</label>
+                                <select name="dept1" required>
+                                    <option value="cse">CSE</option>
+                                    <option value="mech">MECH</option>
+                                    <option value="auto">AUTO</option>
+                                    <option value="civil">CIVIL</option>
+                                    <option value="E&tc">E&TC</option>
+                                </select>
+                            </div>
+                            <div class="form-input">
+                                <label for="payable">Select division</label>
+                                <select name="div1" required>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <input type="submit" value="Submit" class="submit" id="submit" onclick="
+    myfunction()" name="submit"/>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>       function myfunction(){
+
+            alert("You have registered successfully")
+        }
+
+
+
+</script>
+<script>
+    function FillBilling(f) {
+  if(f.billingtoo.checked == true) {
+    f.email2.value = f.email1.value;
+    f.no2.value = f.no1.value;
+  }
+}
+
+
+
+</script>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

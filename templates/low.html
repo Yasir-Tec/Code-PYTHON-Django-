@@ -1,0 +1,140 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MANAGE RESOURCES</title>
+    <style>
+        h1,h3,H4,P,a{color:black;font-weight:bold;font-family:Times New Roman;text-shadow: 3px 1px white;
+        }
+        td,th{font-family:Times New Roman;padding:30px;text-align:center;
+        }
+        input[type=text] {
+  width: 30%;
+  padding-left:10px;
+  box-sizing: border-box;
+  color: #ff0000;
+}
+.form-control{color: #ff0000;
+}
+input::placeholder{
+  color:  #454d55;
+}
+  input[type=text] {
+  width: 20%;
+  padding: 3px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #454d55;
+  border-radius: 4px;
+}
+  input[type=number] {
+  width: 20%;
+  padding: 3px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #454d55;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.button5 {
+  background-color: #454d55;
+  color: WHITE;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: white;
+  color: black;
+}
+
+
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/o.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head><BR><BR><a href="#" class="previous round" onclick="goBack()">back</a>
+<body STYLE="background-color:#9d9c9c">
+<center>
+    <h3>Welcome, {{aa}}</h3>
+    <h3> ISSUED RESOURCES DETAILS</h3>
+</center>
+<br><br>
+<h4>RESOURCES DETAILS :</h4><br>
+<table class="table table-dark table-hover">
+    <thead>
+    <tr style="text-align:center;">
+
+        <th>PROJECT GROUP</th>
+        <th>RESOURCES</th>
+        <th>Quantity</th>
+
+
+    </tr>
+    </thead>
+    <tbody id="myTable">
+    {% for i in uu %}
+    <tr>
+        <td>{{i.gname}}</td>
+        <td>{{i.restype}}</td>
+        <td>{{i.resqua}}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br>
+<h3><a href="return/" style="text-shadow: 3px 1px white;color:black;">LIST OF RETURNED RESOURCES</a></h3>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+</html>

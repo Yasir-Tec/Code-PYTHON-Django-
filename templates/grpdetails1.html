@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+          table{
+        border-collapse:collapse;
+        width:100%;text-align:center;
+        }
+          th,td{
+                border:2px solid #ddd;
+                padding:15px;
+        }
+        th{
+            background-color:#2370bb;
+            color:white;
+        }
+        h3,h1,a{
+        color:#2370bb;
+        }
+
+
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head><a href="#" class="previous round" onclick="goBack()">back</a>
+<body>
+<br>
+{% block content %}
+{% for i in kk %}
+<center>
+    <h1> WELCOME, {{i.degree}} {{i.fname}} {{i.lname}} </h1>
+</center>
+{% endfor %}
+<br>
+<br>
+<h3>GROUP DETAILS OF PROJECT GROUP : {{select}}</h3>
+<br>
+<table>
+    <tbody>
+    <tr>
+        <th>NAME</th>
+        <th>DEPARTMENT</th>
+        <th>DIVISION</th>
+        <th>EMAIL</th>
+        <th>CONTACT NO</th>
+        <th>ROLE</th>
+        <th>DOMAIN ID</th>
+    </tr>
+    <tr>
+
+        {% for i in rs%}
+        <td>{{i.name1}}</td>
+        <td>{{i.dept1}}</td>
+        <td>{{i.div1}}</td>
+        <td>{{i.email1}}</td>
+        <td>{{i.no1}}</td>
+        <td>{{i.role1}}</td>
+        <td>{{i.domainID}}</td>
+    </tr>
+    {% endfor %}
+    {% endblock %}
+    </tbody>
+</table>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+</html>

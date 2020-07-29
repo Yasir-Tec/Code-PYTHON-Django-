@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+
+<style>
+    table{
+            width:100%;
+            border-collapse:collapse;
+    }
+    tr,td{
+        border:2px solid #ddd;
+        text-align:center;
+        padding:10px;
+    }
+    th{
+        background-color:#2370bb;
+        color:white;
+    }
+
+
+         a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+    </style>
+</head><a href="#" class="previous round" onclick="goBack()">back</a>
+<body>
+<form action="update/" method="post">
+    {% csrf_token %}
+    {% block content %}
+
+
+    <table>
+        <tr>
+            <th>MAIN-MODULES</th>
+            <th>SUB_MODULES</th>
+            <th>PRIORITY</th>
+            <th>STATUS</th>
+            <th>UPDATE</th>
+            <th>Enter name to delete</th>
+            <th>Delete</th>
+        </tr>
+        {% for i in tabledata %}
+
+        <tr>
+            <form action="update/" method="post">
+                {% csrf_token %}
+                <td><input type="text" value="{{i.mod}}" name="mod"></td>
+
+                <td><input type="text" value="{{i.smod}}" name="smod"></td>
+
+                <td><input type="text" value="{{i.priority}}" name="prio"></td>
+
+                <td><input type="text" value="{{i.status}}" name="status"></td>
+
+                <td><input type="submit" value="update"></td>
+            </form>
+            <form action="delete/" method="post">
+                {% csrf_token %}
+                <td><input type="text" name="dname" value="NULL"></td>
+
+                <td><input type="submit" value="delete"></td>
+            </form>
+
+</tr>
+{% endfor %}
+</table>
+</form>
+<script>
+function goBack() {
+  window.history.back();
+}
+
+</script>
+</body>
+
+{% endblock %}
+</html>

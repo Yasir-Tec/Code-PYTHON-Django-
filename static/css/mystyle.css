@@ -1,0 +1,27 @@
+
+:root{
+    --primary-color:#6f42c1;
+    --light-gray:#2b3032a1;
+    --text-color:#ff686b;
+    --border:#22b303218;
+}
+.primary-color{
+    color:var(--primary-color)
+}
+.light-gray{
+    color:var(--text-color)
+}
+.text-color{
+    color:var(--text-color)
+}
+<!---------- Header --------->
+
+
+.container{
+ background-color:var(--primary-color)
+
+}
+.header-links a{
+    font-size:20px;
+
+}
